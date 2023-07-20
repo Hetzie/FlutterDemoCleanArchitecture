@@ -1,4 +1,4 @@
-const String newsAPIBaseURL = 'https://newsapi.org/v2 ';
-const String newsAPIKey = 'ff957763c54c44d8b00e5e082bc76cb0';
+const String newsAPIBaseURL = 'https://newsapi.org/v2/';
+const String newsAPIKey = '3d6d307f460748f7845079345ae02a47';
 const String countryQuery = 'us';
-const String categoryQuery = 'general';
+const String categoryQuery = 'business';
