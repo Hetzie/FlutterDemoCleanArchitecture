@@ -1,4 +1,7 @@
+import 'dart:html';
+
 import 'package:demo_clean_architecture/features/daily_news/domain/entities/article.dart';
+import 'package:floor/floor.dart';
 //
 // class ArticleModel extends ArticleEntity {
 //   const ArticleModel({
@@ -29,8 +32,11 @@ import 'package:demo_clean_architecture/features/daily_news/domain/entities/arti
 //     String? name,
 //   });
 // }
+
+@Entity(tableName: 'articles', primaryKeys: ['id'])
 class ArticleModel extends ArticleEntity {
-  Source? source;
+  int? id;
+  // Source? source;
   String? author;
   String? title;
   String? description;
@@ -40,7 +46,8 @@ class ArticleModel extends ArticleEntity {
   String? content;
 
   ArticleModel(
-      {this.source,
+      {this.id,
+        // this.source,
         this.author,
         this.title,
         this.description,
@@ -50,8 +57,7 @@ class ArticleModel extends ArticleEntity {
         this.content});
 
   ArticleModel.fromJson(Map<String, dynamic> json) {
-    source =
-    json['source'] != null ? new Source.fromJson(json['source']) : null;
+    // source = json['source'] != null ? new Source.fromJson(json['source']) : null;
     author = json['author'];
     title = json['title'];
     description = json['description'];
@@ -61,11 +67,24 @@ class ArticleModel extends ArticleEntity {
     content = json['content'];
   }
 
+  factory ArticleModel.fromEntity(ArticleEntity entity) {
+    return ArticleModel(
+      id: entity.id,
+      author: entity.author,
+      publishedAt: entity.publishedAt,
+      title: entity.title,
+      urlToImage: entity.urlToImage,
+      url: entity.url,
+      content: entity.content,
+      description: entity.description
+    );
+  }
+
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.source != null) {
-      data['source'] = this.source!.toJson();
-    }
+    // if (this.source != null) {
+    //   data['source'] = this.source!.toJson();
+    // }
     data['author'] = this.author;
     data['title'] = this.title;
     data['description'] = this.description;
@@ -75,6 +94,7 @@ class ArticleModel extends ArticleEntity {
     data['content'] = this.content;
     return data;
   }
+
 }
 
 class Source {

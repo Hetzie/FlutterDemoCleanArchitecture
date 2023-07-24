@@ -61,6 +61,7 @@ dependencies:
   cached_network_image: ^3.2.0
   dio: ^5.3.0
   meta:
+  sqflite:
 
 dev_dependencies:
   flutter_test:

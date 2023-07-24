@@ -5,4 +5,10 @@ abstract class ArticleRepository{
 
   Future<DataState<List<ArticleEntity>>> getNewsArticles();
 
+  Future<List<ArticleEntity>> getSavedArticle();
+
+  Future<void> saveArticle(ArticleEntity article);
+
+  Future<void> removeArticle(ArticleEntity article);
+
 }

@@ -1,0 +1,23 @@
+import 'package:demo_clean_architecture/features/daily_news/domain/entities/article.dart';
+import 'package:equatable/equatable.dart';
+
+
+abstract class LocalArticlesState extends Equatable {
+
+  final List<ArticleEntity>? articles;
+
+  const LocalArticlesState({this.articles});
+
+
+  @override
+  List<Object?> get props => [articles!];
+}
+
+class LocalArticlesLoading extends LocalArticlesState {
+  LocalArticlesLoading();
+}
+
+class LocalArticlesDone extends LocalArticlesState {
+  const LocalArticlesDone(List<ArticleEntity> article)
+      : super(articles: article);
+}

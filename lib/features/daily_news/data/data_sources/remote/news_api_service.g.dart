@@ -10,9 +10,9 @@ part of 'news_api_service.dart';
 
 class _NewsApiService implements NewsApiService {
   _NewsApiService(
-    this._dio, {
-    this.baseUrl,
-  }) {
+      this._dio, {
+        this.baseUrl,
+      }) {
     baseUrl ??= 'https://newsapi.org/v2';
   }
 
@@ -37,18 +37,18 @@ class _NewsApiService implements NewsApiService {
     final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<HttpResponse<List<ArticleModel>>>(Options(
-      method: 'GET',
-      headers: _headers,
-      extra: _extra,
-    )
+          method: 'GET',
+          headers: _headers,
+          extra: _extra,
+        )
             .compose(
-              _dio.options,
-              '/top-headlines',
-              queryParameters: queryParameters,
-              data: _data,
-            )
+          _dio.options,
+          '/top-headlines',
+          queryParameters: queryParameters,
+          data: _data,
+        )
             .copyWith(
-                baseUrl: _combineBaseUrls(
+            baseUrl: _combineBaseUrls(
               _dio.options.baseUrl,
               baseUrl,
             ))));
@@ -73,9 +73,9 @@ class _NewsApiService implements NewsApiService {
   }
 
   String _combineBaseUrls(
-    String dioBaseUrl,
-    String? baseUrl,
-  ) {
+      String dioBaseUrl,
+      String? baseUrl,
+      ) {
     if (baseUrl == null || baseUrl.trim().isEmpty) {
       return dioBaseUrl;
     }
